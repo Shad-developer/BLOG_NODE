@@ -1,0 +1,34 @@
+<div class="author">
+  <h1 class="author__heading">Hi, I am Umaair</h1>
+  <p class="author__body">Full Stack Web Developer</p>
+</div>
+<img
+  src="/img/hero-image.webp"
+  alt="person looking out through window"
+  class="hero-image"
+  width="981"
+  height="528"
+/>
+
+<section class="article">
+  <h2 class="article__heading">Latest Posts</h2>
+  <ul class="article-ul">
+    <% let index = 1; %>
+    <% if (data.length>0) { %> <% data.forEach(post => { %>
+    <li>
+      <a href="/post/<%= post._id %>">
+        <span><%= index++ %>. <%= post.title %></span>
+        <span class="article-list__date"
+          ><%= post.createdAt.toDateString() %></span
+        >
+      </a>
+    </li>
+    <% }) %> <% } else{ %>
+    <p>No Data Found</p>
+    <%}%>
+  </ul>
+
+  <% if (nextPage !== null) { %>
+  <a href="/?page=<%= nextPage %>" class="pagination">&gt; Next Page</a>
+  <% } %>
+</section>
